@@ -1,4 +1,5 @@
 import { FaChevronDown } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -69,7 +70,7 @@ function Navbar() {
             >
               Login
             </button>
-
+            <Link to="/register">
             <button
               className="
                 px-8 py-3
@@ -84,6 +85,7 @@ function Navbar() {
             >
               Register
             </button>
+            </Link>
 
             <div className="h-8 w-px bg-gray-300"></div>
 
