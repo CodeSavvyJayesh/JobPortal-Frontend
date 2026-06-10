@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
-
+import { registerUser } from "../api/authApi";
 function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -17,20 +17,32 @@ function RegisterForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log(formData);
+  try {
+    const response = await registerUser(formData);
 
-    /*
-      API Integration Later
+    console.log(response);
 
-      axios.post(
-        "http://localhost:8080/api/auth/register",
-        formData
-      )
-    */
-  };
+    alert(response.message);
+
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      error.response?.data?.message ||
+      "Registration Failed"
+    );
+  }
+};
 
   return (
     <div className="w-full flex justify-center items-center p-6 md:p-10">
