@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { registerUser } from "../api/authApi";
+import {Link} from "react-router-dom";
 function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -238,7 +239,7 @@ const handleSubmit = async (e) => {
         <p className="text-center text-gray-500 mt-6">
 
           Already have an account?
-
+          <Link to="/login">
           <span
             className="
               text-blue-600
@@ -249,6 +250,8 @@ const handleSubmit = async (e) => {
           >
             Login
           </span>
+          </Link>
+          
 
         </p>
 

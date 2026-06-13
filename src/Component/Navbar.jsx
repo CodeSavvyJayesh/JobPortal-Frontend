@@ -56,20 +56,22 @@ function Navbar() {
 
           {/* Right Side */}
           <div className="flex items-center gap-4">
-
-            <button
-              className="
-                px-8 py-3
-                rounded-full
-                border border-[#275DF5]
-                text-[#275DF5]
-                font-semibold
-                hover:bg-blue-50
-                transition-all
-              "
-            >
-              Login
-            </button>
+            
+<Link to="/login">
+  <button
+    className="
+      px-8 py-3
+      rounded-full
+      border border-[#275DF5]
+      text-[#275DF5]
+      font-semibold
+      hover:bg-blue-50
+      transition-all
+    "
+  >
+    Login
+  </button>
+</Link>
             <Link to="/register">
             <button
               className="

@@ -37,7 +37,7 @@ function Register() {
           />
 
           <h2 className="text-2xl font-bold text-center mt-8">
-            Join JobPortal
+            Join Jobify
           </h2>
 
           <p className="text-gray-600 text-center mt-4">
