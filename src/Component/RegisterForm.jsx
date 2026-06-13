@@ -40,7 +40,7 @@ const handleSubmit = async (e) => {
 
     alert(
       error.response?.data?.message ||
-      "User Already Exist "
+      "User Already Exist"
     );
   }
 };
