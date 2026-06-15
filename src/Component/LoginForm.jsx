@@ -47,7 +47,7 @@ function LoginForm() {
 
       alert("Login Successful 🚀");
 
-      navigate("/");
+      navigate("/profile");
 
     } catch (error) {
 

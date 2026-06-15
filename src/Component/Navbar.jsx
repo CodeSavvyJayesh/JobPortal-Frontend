@@ -12,10 +12,12 @@ function Navbar() {
           <div className="flex items-center gap-16">
 
             {/* Logo */}
+        
             <div className="flex items-center gap-3 cursor-pointer">
 
               <div className="w-11 h-11 rounded-full bg-[#275DF5] flex items-center justify-center shadow-sm">
                 <span className="text-white font-bold text-xl">
+                 
                   J
                 </span>
               </div>
@@ -23,7 +25,7 @@ function Navbar() {
               <span className="text-[34px] font-bold text-[#275DF5] tracking-tight">
                 Jobify
               </span>
-
+            
             </div>
 
             {/* Navigation */}
