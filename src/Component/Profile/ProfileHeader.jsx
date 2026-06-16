@@ -1,5 +1,28 @@
-function ProfileHeader({ profile }) {
+function ProfileHeader({
+  profile,
+  onEdit
+}) {
+
+  const fields = [
+    profile?.name,
+    profile?.email,
+    profile?.phone,
+    profile?.location,
+    profile?.headline,
+    profile?.about,
+    profile?.profileImage,
+  ];
+
+  const completedFields =
+    fields.filter(Boolean).length;
+
+  const completionPercentage =
+    Math.round(
+      (completedFields / fields.length) * 100
+    );
+
   return (
+
     <div
       className="
         bg-white
@@ -11,25 +34,24 @@ function ProfileHeader({ profile }) {
         lg:p-8
       "
     >
+
       <div
         className="
-          flex
-          flex-col
-          lg:flex-row
-          justify-between
+          grid
+          lg:grid-cols-[220px_1fr_320px]
           gap-8
+          items-center
         "
       >
-        {/* LEFT SECTION */}
 
-        <div className="flex flex-col md:flex-row gap-6">
+        {/* Profile Image */}
 
-          {/* PROFILE IMAGE */}
+        <div className="flex flex-col items-center">
 
           <div
             className="
-              w-36
-              h-36
+              w-40
+              h-40
               rounded-full
               border-[6px]
               border-red-400
@@ -40,83 +62,161 @@ function ProfileHeader({ profile }) {
               bg-gray-100
             "
           >
+
             {profile?.profileImage ? (
+
               <img
                 src={profile.profileImage}
                 alt="Profile"
-                className="w-full h-full object-cover"
+                className="
+                  w-full
+                  h-full
+                  object-cover
+                "
               />
+
             ) : (
-              <span className="text-gray-500 text-sm">
+
+              <span
+                className="
+                  text-gray-500
+                  text-lg
+                "
+              >
                 Add Photo
               </span>
+
             )}
+
           </div>
 
-          {/* USER DETAILS */}
+          <span
+            className="
+              mt-3
+              text-red-500
+              font-semibold
+            "
+          >
+            {completionPercentage}%
+          </span>
 
-          <div>
+        </div>
 
-            <h2 className="text-3xl font-bold text-gray-900">
-              {profile?.name}
-            </h2>
+        {/* User Details */}
 
-            <p className="text-blue-600 font-medium mt-2">
-              {profile?.headline || "No headline added"}
+        <div>
+
+          <h2
+            className="
+              text-4xl
+              font-bold
+              text-gray-900
+            "
+          >
+            {profile?.name ||
+              "Complete Your Profile"}
+          </h2>
+
+          <p
+            className="
+              text-xl
+              text-gray-600
+              mt-2
+            "
+          >
+            {profile?.headline ||
+              "No headline added"}
+          </p>
+
+          <div
+            className="
+              border-t
+              mt-5
+              pt-5
+              grid
+              md:grid-cols-2
+              gap-4
+              text-gray-700
+            "
+          >
+
+            <p>
+              📍{" "}
+              {profile?.location ||
+                "Location not added"}
             </p>
 
-            <div className="mt-4 space-y-2">
+            <p>
+              📞{" "}
+              {profile?.phone ||
+                "Phone not added"}
+            </p>
 
-              <p className="text-gray-600">
-                📧 {profile?.email}
-              </p>
-
-              <p className="text-gray-600">
-                📞 {profile?.phone || "Not Added"}
-              </p>
-
-              <p className="text-gray-600">
-                📍 {profile?.location || "Not Added"}
-              </p>
-
-            </div>
+            <p>
+              📧{" "}
+              {profile?.email ||
+                "Email not available"}
+            </p>
 
           </div>
 
         </div>
 
-        {/* RIGHT SECTION */}
+        {/* Completion Card */}
 
         <div
           className="
             bg-orange-50
             rounded-2xl
             p-6
-            min-w-[280px]
           "
         >
-          <h3 className="font-semibold text-lg">
-            Profile Summary
-          </h3>
 
-          <p
+          <h3
             className="
-              text-gray-600
-              mt-4
-              text-sm
-              leading-6
+              text-2xl
+              font-bold
+              mb-5
             "
           >
-            {profile?.about ||
-              "Tell recruiters about yourself."}
-          </p>
+            Profile Completion
+          </h3>
+
+          <div className="space-y-3">
+
+            {!profile?.phone && (
+              <div>
+                📞 Add Phone Number
+              </div>
+            )}
+
+            {!profile?.location && (
+              <div>
+                📍 Add Location
+              </div>
+            )}
+
+            {!profile?.headline && (
+              <div>
+                💼 Add Headline
+              </div>
+            )}
+
+            {!profile?.about && (
+              <div>
+                📝 Add About Section
+              </div>
+            )}
+
+          </div>
 
           <button
+            onClick={onEdit}
             className="
               mt-6
+              w-full
               bg-[#FF7555]
               text-white
-              px-6
               py-3
               rounded-full
               font-semibold
@@ -124,14 +224,19 @@ function ProfileHeader({ profile }) {
               transition
             "
           >
-            Edit Profile
+            {profile
+              ? "Edit Profile"
+              : "Complete Profile"}
           </button>
 
         </div>
 
       </div>
+
     </div>
+
   );
+
 }
 
 export default ProfileHeader;
