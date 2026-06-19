@@ -107,7 +107,7 @@ function HeroSection() {
           <IoReload className="text-gray-500" />
 
           <span className="text-gray-600">
-            java developer, spring boot
+            java developer, python developer
           </span>
 
         </div>
