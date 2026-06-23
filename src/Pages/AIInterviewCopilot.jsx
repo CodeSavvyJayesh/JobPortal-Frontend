@@ -24,6 +24,10 @@ const AIInterviewCopilot = () => {
            <button>
             Start Interview
            </button>
+
+           <div>
+               <h2> press here after you done with the interview </h2>
+           </div>
         </div>
     );
 };

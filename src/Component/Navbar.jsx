@@ -46,10 +46,10 @@ function Navbar() {
               </a>
 
               <a
-                href="#"
+                href="ai-interview"
                 className="text-[16px] font-medium text-gray-700 hover:text-[#275DF5] transition-all duration-200"
               >
-                Services
+                Interview Copilot
               </a>
 
             </nav>
