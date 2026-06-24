@@ -1,34 +1,99 @@
-// basically here we have to paste the resume  
-// call : http://localhost:8000/generate-questions 
-// basically here we have to make the UI for the interview style   // this is because all the changes would take place on this page only 
-
 import { useState } from "react";
+import { generateQuestions} from "../api/AIInterviewCopilot";
 
 const AIInterviewCopilot = () => {
+
     const [resumeText, setResumeText] = useState("");
 
-    return(
+    const [questions, setQuestions] = useState("");
+
+    const [loading, setLoading] = useState(false);
+
+    const handleStartInterview = async () => {
+
+        try {
+
+            setLoading(true);
+
+            const response =
+                await generateQuestions(resumeText);
+
+            setQuestions(
+                response.questions
+            );
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Failed to generate questions"
+            );
+
+        } finally {
+
+            setLoading(false);
+        }
+    };
+
+    return (
+
         <div>
-            <h1> AI inteview</h1>
-            <textarea  rows = "10"
-            cols="80"
-            placeholder="Paste Resume Here..."
-            value={resumeText}
-            onChange={(e) =>
-                setResumeText(e.target.value)
-            }
+
+            <h1>
+                AI Interview Copilot
+            </h1>
+
+            <textarea
+                rows="10"
+                cols="80"
+                placeholder="Paste Resume Here..."
+                value={resumeText}
+                onChange={(e) =>
+                    setResumeText(
+                        e.target.value
+                    )
+                }
             />
-           <br />
-           <br />
 
-           <button>
-            Start Interview
-           </button>
+            <br />
+            <br />
 
-           <div>
-               <h2> press here after you done with the interview </h2>
-           </div>
+            <button
+                onClick={
+                    handleStartInterview
+                }
+            >
+                Start Interview
+            </button>
+
+            <br />
+            <br />
+
+            {loading && (
+                <h3>
+                    Generating Questions...
+                </h3>
+            )}
+
+            <div>
+
+                <h2>
+                    Interview Questions
+                </h2>
+
+                <pre>
+                    {questions}
+                </pre>
+
+            </div>
+
+            <button>
+                End Interview
+            </button>
+
         </div>
     );
 };
-export default AIInterviewCopilot;  
+
+export default AIInterviewCopilot;
