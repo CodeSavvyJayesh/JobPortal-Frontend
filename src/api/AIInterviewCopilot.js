@@ -9,6 +9,29 @@ const API_BASE_URL = "http://localhost:8000"
 
 // here the api connection should take place on the basis of the backend function 
 
+export const uploadResume = async (file) => {
+    const formData = new FormData();
+
+    formData.append("file", file);
+
+    try {
+        const response = await axios.post(
+            `${API_BASE_URL}/upload-resume`,formData,
+            {
+                headers: {
+                    "Content-Type" : "multipart/form-data",
+                },
+            }
+        );
+        return response.data;
+    }
+    catch(error)
+    {
+        console.error("Eror uploading resume:", error)
+
+        throw error;
+    }
+};
 export const generateQuestions = async (resumeText) =>
 {
     try{
