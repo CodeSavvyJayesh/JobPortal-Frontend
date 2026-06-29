@@ -32,6 +32,8 @@ export const uploadResume = async (file) => {
         throw error;
     }
 };
+/* basically we no longer having this function in our backend 
+it got replaced by the start-interview 
 export const generateQuestions = async (resumeText) =>
 {
     try{
@@ -48,3 +50,29 @@ export const generateQuestions = async (resumeText) =>
         throw error;
     }
 }
+    */ 
+
+export const startInterview = async(resumeText) => {
+    try {
+        const response = await axios.post(
+            `${API_BASE_URL}/start-interview`,
+            {
+                resume_text : resumeText
+            }
+        );
+        return response.data;
+    }
+    catch(error)
+    {
+        console.error("Error starting interview:", error);
+
+        throw error;
+    }
+};    
+
+/* we have to make a new file for this as we have to create a perfect ui for it 
+we have to maintain the following flow 
+selected file, resumetext, candidateName, greting, questions , currentQuestion, currentquestion index,
+currentAnswer , loading, interviewStarted, show greting 
+interview finished ,feedback, score 
+ */ 

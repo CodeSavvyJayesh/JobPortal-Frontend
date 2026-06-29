@@ -3,10 +3,7 @@
 // 
 
 import { useState } from "react";
-import {
-    uploadResume,
-    startInterview
-} from "../api/AIInterviewCopilot";
+import { uploadResume,startInterview } from "../api/AIInterviewCopilot";
 
 const ResumeUpload = ({ onInterviewStarted }) => {
 

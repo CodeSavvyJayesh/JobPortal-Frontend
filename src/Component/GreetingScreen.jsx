@@ -1,8 +1,8 @@
 const GreetingScreen = ({
 
-    candidateName,
+    candidateName,   // this are all props 
 
-    greeting,
+    greeting,      
 
     onBeginInterview
 
